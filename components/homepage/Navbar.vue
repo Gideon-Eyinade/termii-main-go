@@ -20,7 +20,7 @@
 
     <div class="register">
       <div><button class="login">Login</button></div>
-      <div>
+      <div id="link">
         <NuxtLink to="/signup" class="signup">Signup</NuxtLink>
       </div>
     </div>
@@ -43,11 +43,11 @@ export default {
 header {
   display: flex;
   align-content: center;
-  justify-content: space-around;
-  gap: 1rem;
+  justify-content: space-between;
+  gap: 9rem;
   margin: 2.5rem auto;
   width: 100%;
-  /* margin-left: 8rem; */
+  margin-left: 3.75rem;
 }
 
 .logo {
@@ -69,7 +69,7 @@ menu {
   display: flex;
   align-content: center;
   justify-content: space-evenly;
-  gap: 7rem;
+  gap: 11rem;
   font-family: "Karla", sans-serif;
   font-weight: 400;
   font-size: 0.875rem;
@@ -90,7 +90,7 @@ menu p:hover {
   align-content: center;
   justify-content: center;
   gap: 0.875rem;
-  margin-left: 1.25rem;
+  margin-right: 11.25rem;
 }
 
 .login {
@@ -120,8 +120,8 @@ menu p:hover {
   font-size: 0.875rem;
 }
 
-.signup:hover {
-  color: #365899;
+#link:hover {
+  transform: scale(0.91);
   cursor: pointer;
   transition: 0.3s;
 }

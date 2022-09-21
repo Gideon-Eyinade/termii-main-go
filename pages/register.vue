@@ -19,17 +19,12 @@
           <span> 8 characters (minimum) </span> password to create your account
         </p>
         <form>
+          <input id="email" type="email" placeholder="Input your email" />
           <input
-            v-model="email"
-            id="email"
-            type="email"
-            placeholder="Input your email"
-          />
-          <input
-            v-model="password"
             id="password"
             type="password"
             placeholder="Input your password"
+            pattern=".{8,}"
           />
           <!-- <input
             v-model="confirmPassword"
@@ -37,7 +32,9 @@
             type="password"
             placeholder="Confirm your password"
           /> -->
-          <button @click="createUser">Create my account</button>
+          <NuxtLink to="/personalise"
+            ><button @click="createAccount">Create my account</button></NuxtLink
+          >
         </form>
       </main>
     </div>
@@ -51,31 +48,51 @@
   </div>
 </template>
 
-<script>
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+<script setup>
+console.log("My app");
+// import { onMounted } from "vue";
+// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
-const auth = getAuth();
-const createUserWithEmailPassword = createUserWithEmailAndPassword();
+// const auth = getAuth();
+// const createUserWithEmailPassword = createUserWithEmailAndPassword();
+import { createUser } from "../composables/useFirebase";
 
-export default {
-  name: "Register",
+const createAccount = async () => {
+  const email = "geyinade@yahoo.com";
+  const password = "123456";
 
-  methods: {
-    async createUser() {
-      console.log(" Create account");
-      try {
-        await this.$fire.auth.createUserWithEmailAndPassword(
-          this.email,
-          this.password
-        );
-        console.log("Account created");
-        this.$router.push("/access");
-      } catch (e) {
-        console.log("Error creating account");
-      }
-    },
-  },
+  const credentials = await createUser(email, password);
+  console.log(...credentials);
 };
+// export default {
+//   name: "Register",
+//   // methods: {
+//   //   async credentials(email, password) {
+//   //     const credent = await createUser(email, password);
+//   //     console.log(credent);
+//   //   },
+//   // },
+//   // mounted() {
+//   //   const email = "jhshdhfjhd@mail.com";
+//   //   const password = "123456";
+
+//   //   // async credentials(this.email, this.password) {
+//   //   //   const credent = await createUser(email, password);
+//   //   //   console.log(credent);
+//   //   // }
+//   //   const credent = createUser(email, password);
+//   //   console.log(credent);
+//   // },
+// };
+
+// onMounted(
+//   async () => {
+//   const email = "eyinadeg@gmail.com";
+//   const password = "123456";
+
+//   const credentials = await createUser(email, password);
+//   console.log(credent);
+// });
 </script>
 
 <style scoped>
@@ -133,14 +150,11 @@ form {
   flex-direction: column;
   gap: 16px;
 }
+
 main span {
   font-weight: 600;
-  font-size: 1rem;
-  color: inherit;
-  -webkit-box-decoration-break: clone;
-  background: -webkit-linear-gradient(-48deg, #4480b1 -30%, #365899 60%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 0.875rem;
+  color: #365899;
   font-family: "Karla", sans-serif;
 }
 

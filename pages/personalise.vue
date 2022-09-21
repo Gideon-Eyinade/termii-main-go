@@ -1,21 +1,30 @@
 <template>
-  <div class="modal-overlay">
-    <div class="modal">
-      <div class="personalised">
-        <h3>Your account has been created!</h3>
-        <p>
-          Personalise your dashboard and get email templates that you need very
-          fast and easy in 4 steps.
-        </p>
-        <NuxtLink to="/register"
-          ><button>I want to personalise my dashboard</button></NuxtLink
-        >
+  <div class="container">
+    <div class="content">
+      <div class="logo">
+        <NuxtLink to="/"
+          ><img
+            src="https://termii.com/assets/images/logo.png"
+            alt="logo"
+            data-src="https://termii.com/assets/images/logo.png"
+            data-src-retina="https://termii.com/assets/images/logo.png"
+            width="155px"
+            height="auto"
+        /></NuxtLink>
       </div>
-      <NuxtLink to="/">
-        <div class="bottom">
+      <main>
+        <h3>Personal Information</h3>
+        <span class="first"> 1/4 </span>
+        <span class="second"> Soooo, what should we call you? </span>
+        <p>Tell me what to call you in the inbox</p>
+        <input placeholder="Your name here" />
+        <NuxtLink to="/"><button>Continue</button></NuxtLink>
+      </main>
+      <div class="bottom">
+        <NuxtLink to="/" id="link">
           <span>Do not personalised my dashboard</span>
-        </div>
-      </NuxtLink>
+        </NuxtLink>
+      </div>
     </div>
   </div>
 </template>
@@ -27,11 +36,11 @@ export default {
 </script>
 
 <style scoped>
-.modal-overlay {
+.container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
+  align-items: flex-start;
+  justify-content: space-between;
   height: 100vh;
   width: 100vw;
   background-image: linear-gradient(
@@ -44,48 +53,60 @@ export default {
   /* background: linear-gradient(-48deg, #0dcbe5 -30%, #365899 90%) !important; */
 }
 
-.modal {
+.content {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-
-  /* gap: 400px; */
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: 50px;
+  margin-left: 70px;
+  height: 100vh;
 }
 
-.personalised {
+.logo {
+  /* margin-top: 1rem; */
+}
+
+main {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  align-items: center;
+  align-items: flex-start;
   justify-self: center;
   gap: 1rem;
-  margin-bottom: 200px;
+  margin-left: 10px;
 }
 
-.personalised h3 {
-  font-weight: 600;
-  font-size: 1.4rem;
+main h3 {
+  font-weight: 500;
+  font-size: 0.875rem;
   line-height: 30px !important;
-  /* background: -webkit-linear-gradient(-48deg, #4480b1 -80%, #365899 80%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
-  color: #365899;
   font-family: "Karla", sans-serif;
-  width: 200px;
-  text-align: center;
+  width: 400px;
+  /* text-align: center; */
 }
 
-.personalised p {
+.first {
+  color: #365899;
+  font-weight: bold;
+}
+
+.second {
+  color: #365899;
+  font-weight: bold;
+  font-size: 1.8rem;
+  width: 400px;
+}
+
+main p {
   font-family: "Karla", sans-serif;
   font-weight: 500;
   line-height: 22px !important;
   width: 320px;
-  text-align: center;
   font-size: 0.8rem;
 }
 
-.personalised button {
+main button {
   width: 12.5rem;
   text-decoration: none;
   border: none;
@@ -98,23 +119,32 @@ export default {
   text-align: center;
 }
 
-.personalised button:hover {
+main button:hover {
   transform: scale(0.91);
   cursor: pointer;
   transition: 0.3s;
 }
 
+#link {
+  text-decoration: none;
+  color: #000;
+  font-weight: 400;
+}
+
 .bottom {
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   text-align: center;
   text-decoration: none;
 }
+
 .bottom span {
   font-family: "Karla", sans-serif;
   font-weight: 400;
   width: 450px;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   text-decoration: none;
+  margin-left: 500px;
+  margin-top: 600px;
 }
 
 .bottom span:hover {

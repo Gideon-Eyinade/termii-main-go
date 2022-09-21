@@ -8,6 +8,7 @@ import Homepage from "../components/homepage/Homepage.vue";
 export default {
   name: "IndexPage",
   components: { Homepage },
+  
 };
 </script>
 

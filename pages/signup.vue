@@ -18,8 +18,14 @@
           <span> Start by inputting your email </span> to get a personalized
           access code to begin your sign up process.
         </p>
-        <input placeholder="Input your email here" />
+        <!-- <form> -->
+        <input
+          placeholder="Input your email here"
+          pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
+          required
+        />
         <NuxtLink to="/access"><button>Send my code</button></NuxtLink>
+        <!-- </form> -->
       </main>
     </div>
 
@@ -66,17 +72,15 @@ export default {
 main {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 28px;
   width: 400px;
 }
 
 main h3 {
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 1.875rem;
   line-height: 40px !important;
-  background: -webkit-linear-gradient(-48deg, #4480b1 -30%, #365899 60%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #365899;
   font-family: "Karla", sans-serif;
 }
 
@@ -85,19 +89,38 @@ main p {
   font-family: "Karla", sans-serif;
   line-height: 20px !important;
   width: 350px;
+  font-weight: 400;
 }
 
 main span {
   font-weight: 600;
   font-size: 0.875rem;
-  color: #365899;
+  color: #4480b1;
   font-family: "Karla", sans-serif;
 }
 
 main input {
   height: 40px;
   font-family: "Karla", sans-serif;
-  width: 100%;
+  width: 90%;
+  padding-left: 8px;
+  letter-spacing: 1px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+}
+
+.focusing {
+  font-weight: bold;
+}
+
+input:focus {
+  border: 1px solid #365899;
+  border-radius: 3px;
+  transition: 0.9s;
+  color: #12213d;
+  font-weight: bold;
 }
 
 main button {
@@ -106,7 +129,7 @@ main button {
   border: none;
   background: linear-gradient(-48deg, #0dcbe5 -30%, #365899 60%) !important;
   color: #fff;
-  padding: 10px 20px;
+  padding: 12px 20px;
   border-radius: 4px;
   font-family: "Karla", sans-serif;
   font-size: 0.75rem;

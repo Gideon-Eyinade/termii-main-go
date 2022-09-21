@@ -15,7 +15,7 @@
       <main>
         <h3>
           Yayyy! <img src="../assets/horn.png" width="40px" height="40px" /> We
-          just sent your access code to your inbox
+          just sent your access code to your inbox.
         </h3>
 
         <p>
@@ -87,16 +87,14 @@ main {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 500px;
+  width: 400px;
 }
 
 main h3 {
   font-weight: 700;
-  font-size: 2rem;
-  line-height: 44px !important;
-  background: -webkit-linear-gradient(-48deg, #4480b1 -30%, #365899 60%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 1.875rem;
+  line-height: 40px !important;
+  color: #365899;
   font-family: "Karla", sans-serif;
 }
 

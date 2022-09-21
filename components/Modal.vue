@@ -18,8 +18,8 @@
           ><button>I want to personalise my dashboard</button></NuxtLink
         >
       </div>
-      <NuxtLink to="/">
-        <div class="bottom">
+      <NuxtLink to="/" id="link">
+        <div class="bottom" id="link-two">
           <span>No, I would manage any dashboard</span>
         </div>
       </NuxtLink>
@@ -79,10 +79,7 @@ img {
   font-weight: 600;
   font-size: 1.4rem;
   line-height: 30px !important;
-  /* background: -webkit-linear-gradient(-48deg, #4480b1 -80%, #365899 80%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
-  color: #365899;
+  color: #12213d;
   font-family: "Karla", sans-serif;
   width: 200px;
   text-align: center;
@@ -90,7 +87,7 @@ img {
 
 .personalised p {
   font-family: "Karla", sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 22px !important;
   width: 320px;
   text-align: center;
@@ -103,7 +100,7 @@ img {
   border: none;
   background: linear-gradient(-48deg, #0dcbe5 -30%, #365899 60%) !important;
   color: #fff;
-  padding: 10px 0;
+  padding: 12px 2px;
   border-radius: 4px;
   font-family: "Karla", sans-serif;
   font-size: 0.75rem;
@@ -116,23 +113,33 @@ img {
   transition: 0.3s;
 }
 
+#link {
+  text-decoration: none;
+}
+
 .bottom {
   margin-bottom: 20px;
   text-align: center;
   text-decoration: none;
 }
+
 .bottom span {
   font-family: "Karla", sans-serif;
-  font-weight: 400;
+  font-weight: 600;
   width: 450px;
   font-size: 0.75rem;
   text-decoration: none;
+  color: #000;
 }
 
-.bottom span:hover {
-  transform: scale(0.9);
+span:hover {
+  transform: scale(0.91);
   transition: 0.3s;
   cursor: pointer;
   text-decoration: none;
+}
+
+#link-two:hover {
+  transform: scale(0.91);
 }
 </style>

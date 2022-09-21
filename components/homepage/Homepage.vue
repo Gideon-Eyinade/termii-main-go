@@ -66,19 +66,14 @@ main {
   justify-content: flex-start;
   gap: 1.5rem;
   width: 21rem;
-  margin-left: 6.25rem;
-  /* margin-left: 7rem; */
+  margin-left: 4.375rem;
 }
 
 .display h3 {
   font-weight: 700;
   font-size: 1.875rem;
   line-height: 40px !important;
-  color: inherit;
-  -webkit-box-decoration-break: clone;
-  background: -webkit-linear-gradient(-48deg, #4480b1 -30%, #365899 60%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #365899;
   font-family: "Karla", sans-serif;
 }
 
