@@ -23,12 +23,24 @@
           email.
         </p>
 
-        <input placeholder="Paste or input access code here" />
+        <input
+          placeholder="Paste or input access code here"
+          v-model="code"
+          id="inputation"
+        />
+
         <div class="buttons">
-          <button class="first-button" @click="showModal = true">
+          <!-- Must be a 5-digit number -->
+          <button
+            class="first-button"
+            @click="validateCode(code.value)"
+            :id="this.code == '' ? 'disabling' : ''"
+          >
             Verify my code
           </button>
-          <button class="second-button">There is no code in my inbox</button>
+          <NuxtLink to="/signup">
+            <button class="second-button">There is no code in my inbox</button>
+          </NuxtLink>
         </div>
       </main>
     </div>
@@ -52,8 +64,24 @@ export default {
   components: { Modal },
   data() {
     return {
+      code: "",
       showModal: false,
     };
+  },
+  methods: {
+    validateCode() {
+      var validRegex = /\b\d{5}\b/g;
+
+      if (this.code == "") {
+        alert("Please input code");
+        this.code = "";
+      } else if (this.code.match(validRegex)) {
+        this.showModal = true;
+      } else {
+        alert("Invalid code, input a 5-digit-number!");
+        this.code = "";
+      }
+    },
   },
 };
 </script>
@@ -116,6 +144,21 @@ main input {
   height: 40px;
   font-family: "Karla", sans-serif;
   width: 400px;
+  padding-left: 16px;
+  letter-spacing: 1px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+input:focus {
+  border: 1px solid #365899;
+  border-radius: 3px;
+  transition: 0.9s;
+  color: #12213d;
+  font-weight: bold;
 }
 
 .buttons {
@@ -142,6 +185,13 @@ main input {
   transition: 0.3s;
 }
 
+#disabling {
+  opacity: 0.5;
+}
+
+#disabling:hover {
+  transform: none;
+}
 .second-button {
   width: 12rem;
   text-decoration: none;

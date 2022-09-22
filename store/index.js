@@ -1,70 +1,29 @@
-const actions = {
-  async onAuthStateChangedAction(state, { authUser, claims }) {
-    if (!authUser) {
-      state.commit("SET_USER", null);
-
-      this.$router.push({
-        path: "/auth/signin",
-      });
-    } else {
-      const { uid, email, password } = authUser;
-      state.commit("SET_USER", {
-        uid,
-        email,
-        password,
-      });
-    }
-  },
-};
-
-const mutations = {
-  SET_USER(state, user) {
-    state.user = user;
-  },
-};
-
-const state = () => ({
-  user: null,
-});
-
-const getters = {
-  getUser(state) {
-    return state.user;
-  },
-};
-
 export default {
-  state,
-  actions,
-  mutations,
-  getters,
+  state: {
+    users: {
+      id: "",
+      email: "",
+      password: "",
+    },
+  },
+
+  getters: {},
+  mutations: {
+    // changeId(state, payload) {
+    //   state.users.id = payload;
+    // },
+    // changeEmail(state, payload) {
+    //   state.users.email = payload;
+    // },
+    // changePassword(state, payload) {
+    //   state.users.password = payload;
+    // },
+    changeDetails(state, object) {
+        
+      state.users.id = object.id;
+      state.users.email = object.email;
+      state.users.password = object.password;
+    },
+  },
+  actions: {},
 };
-
-// function handleVerifyEmail(auth, actionCode, continueUrl, lang) {
-//   // Localize the UI to the selected language as determined by the lang
-//   // parameter.
-//   // Try to apply the email verification code.
-//   applyActionCode(auth, actionCode)
-//     .then((resp) => {
-//       // Email address has been verified.
-//       // TODO: Display a confirmation message to the user.
-//       // You could also provide the user with a link back to the app.
-//       // TODO: If a continue URL is available, display a button which on
-//       // click redirects the user back to the app via continueUrl with
-//       // additional state determined from that URL's parameters.
-//     })
-//     .catch((error) => {
-//       // Code is invalid or expired. Ask the user to verify their email address
-//       // again.
-//     });
-// }
-
-// function handleVerifyEmail(auth, actionCode, continueUrl, lang) {
-//   applyActionCode(auth, actionCode)
-//     .then((resp) => {
-//       console.log("Email address has been verified");
-//     })
-//     .catch((error) => {
-//       console.log("Invalid code");
-//     });
-// }

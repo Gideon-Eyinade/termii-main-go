@@ -12,14 +12,26 @@
             height="auto"
         /></NuxtLink>
       </div>
+
       <main>
         <h3>Personal Information</h3>
+
         <span class="first"> 1/4 </span>
         <span class="second"> Soooo, what should we call you? </span>
         <p>Tell me what to call you in the inbox</p>
-        <input placeholder="Your name here" />
-        <NuxtLink to="/"><button>Continue</button></NuxtLink>
+
+        <input v-model="name" placeholder="Your name here" />
+
+        <NuxtLink to="/">
+          <button
+            :disabled="typeof name === 'string' ? !isDisabled : isDisabled"
+            :id="this.name == '' ? 'disabling' : ''"
+          >
+            Continue
+          </button>
+        </NuxtLink>
       </main>
+
       <div class="bottom">
         <NuxtLink to="/" id="link">
           <span>Do not personalised my dashboard</span>
@@ -32,6 +44,12 @@
 <script>
 export default {
   name: "Personalise",
+  data() {
+    return {
+      name: "",
+      isDisabled: true,
+    };
+  },
 };
 </script>
 
@@ -82,20 +100,21 @@ main h3 {
   font-size: 0.875rem;
   line-height: 30px !important;
   font-family: "Karla", sans-serif;
-  width: 400px;
+  /* width: 200px; */
   /* text-align: center; */
 }
 
 .first {
   color: #365899;
   font-weight: bold;
+  font-size: 12px;
 }
 
 .second {
   color: #365899;
   font-weight: bold;
   font-size: 1.8rem;
-  width: 400px;
+  width: 300px;
 }
 
 main p {
@@ -106,8 +125,29 @@ main p {
   font-size: 0.8rem;
 }
 
+input {
+  height: 40px;
+  font-family: "Karla", sans-serif;
+  width: 90%;
+  padding-left: 16px;
+  letter-spacing: 1px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+input:focus {
+  border: 1px solid #365899;
+  border-radius: 3px;
+  transition: 0.9s;
+  color: #12213d;
+  font-weight: bold;
+}
+
 main button {
-  width: 12.5rem;
+  width: 8rem;
   text-decoration: none;
   border: none;
   background: linear-gradient(-48deg, #0dcbe5 -30%, #365899 90%) !important;
@@ -123,6 +163,14 @@ main button:hover {
   transform: scale(0.91);
   cursor: pointer;
   transition: 0.3s;
+}
+
+#disabling {
+  opacity: 0.5;
+}
+
+#disabling:hover {
+  transform: none;
 }
 
 #link {

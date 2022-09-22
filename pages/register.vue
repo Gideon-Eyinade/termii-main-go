@@ -18,23 +18,31 @@
           Your email has been confirmed. Now set your
           <span> 8 characters (minimum) </span> password to create your account
         </p>
-        <form>
-          <input id="email" type="email" placeholder="Input your email" />
+
+        <form @submit="onSubmit">
+          <!-- <input
+            id="email"
+            type="email"
+            v-model="email"
+            placeholder="Input your email"
+          /> -->
+
+          <h5>{{ this.id }}</h5>
+
           <input
-            id="password"
             type="password"
+            v-model="password"
             placeholder="Input your password"
-            pattern=".{8,}"
           />
+
           <!-- <input
             v-model="confirmPassword"
             id="confirm-password"
             type="password"
             placeholder="Confirm your password"
           /> -->
-          <NuxtLink to="/personalise"
-            ><button @click="createAccount">Create my account</button></NuxtLink
-          >
+
+          <input type="submit" class="buton" value="Create my account" />
         </form>
       </main>
     </div>
@@ -48,51 +56,42 @@
   </div>
 </template>
 
-<script setup>
-console.log("My app");
-// import { onMounted } from "vue";
-// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+<script>
+export default {
+  name: " Register",
 
-// const auth = getAuth();
-// const createUserWithEmailPassword = createUserWithEmailAndPassword();
-import { createUser } from "../composables/useFirebase";
+  data() {
+    return {
+      isDisabled: false,
+      id: this.$store.state.users.id,
+      email: this.$store.state.users.email,
+      password: "",
+    };
+  },
 
-const createAccount = async () => {
-  const email = "geyinade@yahoo.com";
-  const password = "123456";
+  //
+  methods: {
+    async onSubmit(e) {
+      e.preventDefault();
 
-  const credentials = await createUser(email, password);
-  console.log(...credentials);
+      const users = {
+        email: this.email,
+        password: this.password,
+      };
+
+      try {
+        await this.$axios.put(`http://localhost:9090/users/${id}`, users);
+        this.$router.push({ path: "/personalise" });
+      } catch (e) {
+        console.log("Error updating email");
+      }
+    },
+  },
+
+  mounted() {
+    console.log(this.id);
+  },
 };
-// export default {
-//   name: "Register",
-//   // methods: {
-//   //   async credentials(email, password) {
-//   //     const credent = await createUser(email, password);
-//   //     console.log(credent);
-//   //   },
-//   // },
-//   // mounted() {
-//   //   const email = "jhshdhfjhd@mail.com";
-//   //   const password = "123456";
-
-//   //   // async credentials(this.email, this.password) {
-//   //   //   const credent = await createUser(email, password);
-//   //   //   console.log(credent);
-//   //   // }
-//   //   const credent = createUser(email, password);
-//   //   console.log(credent);
-//   // },
-// };
-
-// onMounted(
-//   async () => {
-//   const email = "eyinadeg@gmail.com";
-//   const password = "123456";
-
-//   const credentials = await createUser(email, password);
-//   console.log(credent);
-// });
 </script>
 
 <style scoped>
@@ -158,17 +157,42 @@ main span {
   font-family: "Karla", sans-serif;
 }
 
+h5 {
+  height: 40px;
+  font-family: "Karla", sans-serif;
+  width: 90%;
+  padding-left: 16px;
+  letter-spacing: 1px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  border: none;
+  color: #000;
+  font-size: 16px;
+  border-radius: 4px;
+  text-align: center;
+}
+
 main input {
   height: 40px;
   font-family: "Karla", sans-serif;
-  font-size: 12px;
+  width: 90%;
+  padding-left: 16px;
+  letter-spacing: 1px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 4px;
 }
 
-input:hover {
+input:focus {
   border: 1px solid #365899;
+  border-radius: 3px;
+  transition: 0.9s;
+  color: #12213d;
+  font-weight: bold;
 }
 
-main button {
+.buton {
   width: 10rem;
   /* height: 4rem; */
   text-decoration: none;
@@ -182,10 +206,18 @@ main button {
   margin-top: 16px;
 }
 
-main button:hover {
+.buton:hover {
   cursor: pointer;
   transition: 0.3s;
   transform: scale(0.91);
+}
+
+#disabling {
+  opacity: 0.5;
+}
+
+#disabling:hover {
+  transform: none;
 }
 
 .right {

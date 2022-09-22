@@ -71,9 +71,9 @@ export default {
   //         target: "http://localhost:9090",
   //         changeOrigin: true,
   //         logLevel: "debug",
-  //         pathRewrite: { "^/api": "/" },
-  //       },
-  //     },
-  //   },
-  // };
+  //         pathRewrite: { "^/api": "/" }
+  //       }
+  //     }
+  //   }
+  // }
 };
