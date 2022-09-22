@@ -54,7 +54,7 @@
 
     <div class="right">
       <img
-        src="../assets/cheerful-teenager-with-toothy-smile-afro-hairstyle-holds-modern-cell-phone-chats-online-with-boyfriend 1.png"
+        src="../assets/fine-girl.png"
         alt="Mail-Logo"
       />
     </div>

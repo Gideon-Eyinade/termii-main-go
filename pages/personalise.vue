@@ -80,6 +80,7 @@ export default {
   gap: 50px;
   margin-left: 70px;
   height: 100vh;
+  /* test */
 }
 
 .logo {

@@ -47,7 +47,7 @@
 
     <div class="right">
       <img
-        src="../assets/indoor-shot-good-looking-curly-haired-woman-makes-face-plam-closes-eyes-laughs-positively-smiles-broadly-has-happy-talk-with-friend-enjoys-caffeine-beverage-morning-dressed-casually 1.png"
+        src="../assets/curly-haired.png"
         alt="Mail-Logo"
       />
     </div>

@@ -44,7 +44,7 @@
 
     <div class="right" v-if="!showModal">
       <img
-        src="../assets/handsome-young-african-man-holding-mobile-phone-gesturing-while-standing-against-grey-wall 1.png"
+        src="../assets/fine-boy.png"
         alt="Mail-Logo"
       />
     </div>

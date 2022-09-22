@@ -15,7 +15,7 @@
 
       <section class="image-display">
         <img
-          src="../../assets/woman-wearing-wireless-earbuds-using-mobile-phone 1.png"
+          src="../../assets/woman-phone.png"
           alt="Mail-Logo"
         />
       </section>
