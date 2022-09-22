@@ -1,4 +1,11 @@
-# termii-dashboard
+# termii-main-go-test
+
+TO START SERVER:
+
+1. Install json-server on vue cli by inputing: 'npm install -g json-server'
+2. Start the server on the vue cli by inputing: 'json-server --watch db.json --port 9090'
+3. You will see the local host running on your vue cli: 'http://localhost:9090/users'
+4. Copy the json-server url to any browser to check for update
 
 ## Build Setup
 
@@ -40,7 +47,6 @@ More information about the usage of this directory in [the documentation](https:
 Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
 
 ### `pages`
 

@@ -35,7 +35,6 @@
             class="buton"
             value="Send my code"
             :id="email == '' ? 'disabling' : ''"
-            
             :disabled="isDisabled"
           />
         </form>
@@ -46,10 +45,7 @@
     </div>
 
     <div class="right">
-      <img
-        src="../assets/curly-haired.png"
-        alt="Mail-Logo"
-      />
+      <img src="../assets/curly-haired.jpg" alt="Mail-Logo" />
     </div>
   </div>
 </template>

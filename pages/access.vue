@@ -43,10 +43,7 @@
     </div>
 
     <div class="right" v-if="!showModal">
-      <img
-        src="../assets/fine-boy.png"
-        alt="Mail-Logo"
-      />
+      <img src="../assets/fine-boy.jpg" alt="Mail-Logo" />
     </div>
 
     <Modal v-show="showModal" />

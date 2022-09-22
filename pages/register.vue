@@ -53,10 +53,7 @@
     </div>
 
     <div class="right">
-      <img
-        src="../assets/fine-girl.png"
-        alt="Mail-Logo"
-      />
+      <img src="../assets/fine-girl.jpg" alt="Mail-Logo" />
     </div>
   </div>
 </template>

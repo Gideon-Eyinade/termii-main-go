@@ -14,10 +14,7 @@
       </section>
 
       <section class="image-display">
-        <img
-          src="../../assets/woman-phone.png"
-          alt="Mail-Logo"
-        />
+        <img src="../../assets/woman-phone.jpg" alt="Mail-Logo" />
       </section>
     </main>
 
