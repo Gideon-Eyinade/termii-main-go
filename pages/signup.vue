@@ -34,7 +34,8 @@
             type="submit"
             class="buton"
             value="Send my code"
-            :id="email == '' || validateEmail == false ? 'disabling' : ''"
+            :id="email == '' ? 'disabling' : ''"
+            
             :disabled="isDisabled"
           />
         </form>
@@ -61,7 +62,6 @@ export default {
       isDisabled: false,
       id: "",
       email: "",
-      password: "",
     };
   },
 
@@ -84,14 +84,15 @@ export default {
       e.preventDefault();
 
       const users = {
-        id: this.id,
         email: this.email,
-        password: this.password,
       };
 
       try {
-        let response = await this.$axios.post("http://localhost:9090/users", users);
-        // const res = await this.$axios.get("http://localhost:9090/users");
+        let response = await this.$axios.post(
+          "http://localhost:9090/users",
+          users
+        );
+
         //console.log(response);
         this.$store.commit("changeDetails", response.data);
         this.$router.push({ path: "/access" });

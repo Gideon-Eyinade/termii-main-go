@@ -13,10 +13,7 @@
         /></NuxtLink>
       </div>
       <main>
-        <h3>
-          Yayyy! <img src="../assets/horn.png" width="40px" height="40px" /> We
-          just sent your access code to your inbox.
-        </h3>
+        <h3>Yayyy!🎉 We just sent your access code to your inbox.</h3>
 
         <p>
           <span> Copy & paste the access code </span> here to confirm your

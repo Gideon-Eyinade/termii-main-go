@@ -64,8 +64,9 @@ export default {
   background-image: linear-gradient(
     to right,
     #ffffff 60%,
-    rgba(68, 128, 177) 20%,
-    rgba(68, 128, 177, 0.1) 10%
+
+    rgba(68, 128, 177) 50%,
+    rgba(68, 128, 177, 0.6) 80%
   );
 
   /* background: linear-gradient(-48deg, #0dcbe5 -30%, #365899 90%) !important; */

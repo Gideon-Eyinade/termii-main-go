@@ -27,22 +27,27 @@
             placeholder="Input your email"
           /> -->
 
-          <h5>{{ this.id }}</h5>
-
+          <div class="append-name">{{ this.email }}</div>
           <input
             type="password"
             v-model="password"
             placeholder="Input your password"
+            @change="validatePassword"
           />
 
-          <!-- <input
+          <input
             v-model="confirmPassword"
             id="confirm-password"
             type="password"
             placeholder="Confirm your password"
-          /> -->
+          />
 
-          <input type="submit" class="buton" value="Create my account" />
+          <input
+            type="submit"
+            class="buton"
+            :id="this.password == '' ? 'disabling' : ''"
+            value="Create my account"
+          />
         </form>
       </main>
     </div>
@@ -71,16 +76,36 @@ export default {
 
   //
   methods: {
+    validatePassword() {
+      var validRegex =
+        /(?=^.{8,32}$)(?=(?:.*?\d){1})(?=.*[a-z])(?=(?:.*?[!@#$%*()_+^&}{:;?.]){1})(?!.*\s)[0-9a-zA-Z!@#$%*()_+^&]*$/;
+
+      if (this.password == null || this.password == "") {
+        alert("Please input password");
+        this.password = "";
+      } else if (this.password.match(validRegex)) {
+      } else {
+        alert(
+          "Invalid password, enter a minimum of 8 characters with at least 1 number and 1 special character!"
+        );
+        this.password = "";
+      }
+    },
+
     async onSubmit(e) {
       e.preventDefault();
 
       const users = {
+        id: this.id,
         email: this.email,
         password: this.password,
       };
 
       try {
-        await this.$axios.put(`http://localhost:9090/users/${id}`, users);
+        const response = await this.$axios.put(
+          `http://localhost:9090/users/${this.id}`,
+          users
+        );
         this.$router.push({ path: "/personalise" });
       } catch (e) {
         console.log("Error updating email");
@@ -89,7 +114,7 @@ export default {
   },
 
   mounted() {
-    console.log(this.id);
+    // console.log(this.id);
   },
 };
 </script>
@@ -157,7 +182,7 @@ main span {
   font-family: "Karla", sans-serif;
 }
 
-h5 {
+.append-name {
   height: 40px;
   font-family: "Karla", sans-serif;
   width: 90%;
@@ -165,10 +190,15 @@ h5 {
   letter-spacing: 1px;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   border: none;
-  color: #000;
+  color: #12213d;
   font-size: 16px;
   border-radius: 4px;
   text-align: center;
+  display: flex;
+  align-content: center;
+  padding-top: 10px;
+  border: 1px solid #365899;
+  font-weight: bold;
 }
 
 main input {

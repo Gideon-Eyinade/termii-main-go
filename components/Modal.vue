@@ -2,13 +2,7 @@
   <div class="modal-overlay">
     <div class="modal">
       <div class="personalised">
-        <h3>
-          Your account has been created!<img
-            src="../assets/horn.png"
-            width="40px"
-            height="20px"
-          />
-        </h3>
+        <h3>Your account has been created!🎉</h3>
 
         <p>
           Personalise your dashboard and get email templates that you need very
