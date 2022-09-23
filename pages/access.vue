@@ -142,7 +142,7 @@ main input {
   letter-spacing: 1px;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   border: none;
-  color: #fff;
+  color: #12213d;
   font-size: 16px;
   border-radius: 4px;
 }
@@ -207,11 +207,13 @@ input:focus {
 
 .right {
   display: flex;
+  width: 40%;
   /* height: 98.7vh; */
 }
 
 .right img {
-  width: 550px;
+  width: 100%;
+  object-fit: cover;
   z-index: -4;
 }
 </style>

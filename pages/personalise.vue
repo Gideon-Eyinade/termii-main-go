@@ -38,6 +38,8 @@
         </NuxtLink>
       </div>
     </div>
+
+    <div class="right"></div>
   </div>
 </template>
 
@@ -56,18 +58,11 @@ export default {
 <style scoped>
 .container {
   display: flex;
-  flex-direction: column;
+
   align-items: flex-start;
   justify-content: space-between;
   height: 100vh;
   width: 100vw;
-  background-image: linear-gradient(
-    to right,
-    #ffffff 60%,
-
-    rgba(68, 128, 177) 50%,
-    rgba(68, 128, 177, 0.6) 80%
-  );
 
   /* background: linear-gradient(-48deg, #0dcbe5 -30%, #365899 90%) !important; */
 }
@@ -80,7 +75,14 @@ export default {
   gap: 50px;
   margin-left: 70px;
   height: 100vh;
+
   /* test */
+}
+
+.right {
+  background: linear-gradient(-48deg, #0dcbe5 -30%, #365899 60%);
+  width: 40%;
+  height: 100vh;
 }
 
 .logo {

@@ -44,10 +44,12 @@ header {
   display: flex;
   align-content: center;
   justify-content: space-between;
-  gap: 9rem;
-  margin: 2.5rem auto;
+  /* gap: 9rem; */
+  margin: 0;
   width: 100%;
-  margin-left: 3.75rem;
+  padding: 2.5rem 3.75rem;
+  height: 100px;
+  /* background: brown; */
 }
 
 .logo {
@@ -90,7 +92,7 @@ menu p:hover {
   align-content: center;
   justify-content: center;
   gap: 0.875rem;
-  margin-right: 11.25rem;
+  margin-right: 8.25rem;
 }
 
 .login {

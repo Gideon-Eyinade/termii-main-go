@@ -27,7 +27,37 @@
               v-model="email"
               @change="validateEmail"
             />
-            <div :class="email == '' ? '' : 'dot-falling'"></div>
+            <div :class="{ 'dot-falling': isValidating }"></div>
+            <div v-if="isValidated">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="svg-success"
+                viewBox="0 0 24 24"
+              >
+                <g
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-miterlimit="10"
+                >
+                  <circle
+                    class="success-circle-outline"
+                    cx="12"
+                    cy="12"
+                    r="11.5"
+                  />
+                  <circle
+                    class="success-circle-fill"
+                    cx="12"
+                    cy="12"
+                    r="11.5"
+                  />
+                  <polyline
+                    class="success-tick"
+                    points="17,8.5 9.5,15.5 7,13"
+                  />
+                </g>
+              </svg>
+            </div>
           </div>
 
           <input
@@ -58,11 +88,45 @@ export default {
       isDisabled: false,
       id: "",
       email: "",
+      isValidating: false,
+      isValidated: false,
     };
+  },
+
+  watch: {
+    email(newValue, oldValue) {
+      console.log(newValue, oldValue);
+      var validRegex =
+        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+      if (newValue.length > 2) {
+        console.log("here");
+        this.isValidating = true;
+        this.isValidated = false;
+
+        if (newValue.match(validRegex)) {
+          this.isValidating = false;
+          this.isValidated = true;
+        } else {
+          // alert("Invalid email address!");
+          // this.email = "";
+        }
+      } else {
+        this.isValidating = false;
+        this.isValidated = false;
+      }
+    },
   },
 
   methods: {
     validateEmail() {
+      console.log("here");
+
+      if (this.email.length > 2) {
+        console.log("here");
+        this.isValidating = true;
+      }
+
       var validRegex =
         /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
@@ -71,8 +135,8 @@ export default {
         this.email = "";
       } else if (this.email.match(validRegex)) {
       } else {
-        alert("Invalid email address!");
-        this.email = "";
+        // alert("Invalid email address!");
+        // this.email = "";
       }
     },
 
@@ -132,7 +196,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 97.5vh;
+  height: 100vh;
 }
 
 .left {
@@ -142,6 +206,8 @@ export default {
   justify-content: flex-start;
   gap: 100px;
   margin-left: 70px;
+
+  width: 50%;
 }
 
 .logo {
@@ -198,7 +264,7 @@ main input {
   letter-spacing: 1px;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   border: none;
-  color: #fff;
+  color: #12213d;
   font-size: 16px;
   border-radius: 4px;
 }
@@ -295,57 +361,96 @@ input:focus {
   }
 }
 
-.wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 12px;
+.svg-success {
+  display: inline-block;
+  vertical-align: top;
+  height: 20px;
+  width: 20px;
+  opacity: 1;
+  overflow: visible;
+  margin-left: 6px;
 }
-.checkmark__circle {
-  stroke-dasharray: 166;
-  stroke-dashoffset: 166;
-  stroke-width: 2;
-  stroke-miterlimit: 10;
-  stroke: #7ac142;
+
+@keyframes success-tick {
+  0% {
+    stroke-dashoffset: 16px;
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 31px;
+    opacity: 1;
+  }
+}
+
+@keyframes success-circle-outline {
+  0% {
+    stroke-dashoffset: 72px;
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 0px;
+    opacity: 1;
+  }
+}
+
+@keyframes success-circle-fill {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.success-tick {
   fill: none;
-  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+  stroke-width: 1px;
+  stroke: #ffffff;
+  stroke-dasharray: 15px, 15px;
+  stroke-dashoffset: -14px;
+  animation: success-tick 450ms ease 1400ms forwards;
+  opacity: 0;
 }
-.checkmark {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  display: block;
-  stroke-width: 2;
-  stroke: #fff;
-  stroke-miterlimit: 10;
-  margin: 10% auto;
-  box-shadow: inset 0px 0px 0px #7ac142;
-  animation: fill 0.4s ease-in-out 0.4s forwards,
-    scale 0.3s ease-in-out 0.9s both;
+
+.success-circle-outline {
+  fill: none;
+  stroke-width: 1px;
+  stroke: #81c038;
+  stroke-dasharray: 72px, 72px;
+  stroke-dashoffset: 72px;
+  animation: success-circle-outline 300ms ease-in-out 800ms forwards;
+  opacity: 0;
 }
-.checkmark__check {
-  transform-origin: 50% 50%;
-  stroke-dasharray: 48;
-  stroke-dashoffset: 48;
-  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+
+.success-circle-fill {
+  fill: #81c038;
+  stroke: none;
+  opacity: 0;
+  animation: success-circle-fill 300ms ease-out 1100ms forwards;
 }
-@keyframes stroke {
-  100% {
+
+@media screen and (-ms-high-contrast: active),
+  screen and (-ms-high-contrast: none) {
+  .success-tick {
+    stroke-dasharray: 0;
     stroke-dashoffset: 0;
+    animation: none;
+    opacity: 1;
   }
-}
-@keyframes scale {
-  0%,
-  100% {
-    transform: none;
+
+  .success-circle-outline {
+    stroke-dasharray: 0;
+    stroke-dashoffset: 0;
+    animation: none;
+    opacity: 1;
   }
-  50% {
-    transform: scale3d(1.1, 1.1, 1);
-  }
-}
-@keyframes fill {
-  100% {
-    box-shadow: inset 0px 0px 0px 30px #7ac142;
+
+  .success-circle-fill {
+    animation: none;
+    opacity: 1;
   }
 }
 
@@ -379,11 +484,12 @@ input:focus {
   display: flex;
   justify-content: flex-end;
   height: 100vh;
-  width: 45rem;
+  width: 50%;
 }
 
 .right img {
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 </style>

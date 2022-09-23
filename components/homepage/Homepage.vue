@@ -35,15 +35,13 @@ export default {
 
 <style scoped>
 .container {
-  height: 99.5vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   /* gap: 3rem; */
   width: 100vw;
-}
-
-.Navbar {
-  width: 100%;
+  /* background: green; */
+  justify-content: flex-start;
 }
 
 main {
@@ -51,18 +49,20 @@ main {
   flex-direction: row;
   align-content: center;
   justify-content: space-between;
-  margin: 3.5rem auto;
-  gap: 15rem;
+  margin: 0;
+  /* gap: 15rem; */
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 240px);
+  /* background: yellow; */
 }
 
 .display {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 1.5rem;
   width: 21rem;
+  /* margin-top: 40px; */
   margin-left: 4.375rem;
 }
 
@@ -100,13 +100,14 @@ main {
 }
 
 .image-display {
-  margin-top: -3.5rem;
-  margin-right: 0;
+  width: 50%;
+  height: 100%;
 }
 
 .image-display img {
-  width: 450px;
-  height: 400px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .bottom {
@@ -117,7 +118,7 @@ main {
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   width: 100%;
-  height: 15.625rem;
+  height: 14rem;
   /* padding: 20rem auto; */
 }
 
