@@ -1,9 +1,9 @@
 // export default function ({ route, redirect }) {
-//   if (route.path !== "/auth/signin") {
+//   if (route.path !== "/pages/index") {
 //     if (!$fire.auth.currentUser) {
-//       return redirect("/auth/signin");
+//       return redirect("/pages/index");
 //     }
-//   } else if (route.path === "/auth/signin") {
+//   } else if (route.path === "/pages/index) {
 //     if (!$fire.auth.currentUser) {
 //     } else {
 //       return redirect("/");

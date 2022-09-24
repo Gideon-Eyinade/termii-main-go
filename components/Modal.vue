@@ -89,12 +89,12 @@ img {
 }
 
 .personalised button {
-  width: 12.5rem;
+  width: 15rem;
   text-decoration: none;
   border: none;
   background: linear-gradient(-48deg, #0dcbe5 -30%, #365899 60%) !important;
   color: #fff;
-  padding: 12px 2px;
+  padding: 12px 4px;
   border-radius: 4px;
   font-family: "Karla", sans-serif;
   font-size: 0.75rem;

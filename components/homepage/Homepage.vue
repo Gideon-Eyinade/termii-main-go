@@ -114,7 +114,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 22;
+  /* z-index: 22; */
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   width: 100%;

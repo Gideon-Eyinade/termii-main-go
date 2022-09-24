@@ -28,7 +28,9 @@
           /> -->
 
           <div class="append-check">
-            <div class="append-name">{{ this.email }}</div>
+            <div class="append-name">
+              {{ email }}
+            </div>
             <div class="append-checkmark">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -96,8 +98,8 @@ export default {
   data() {
     return {
       isDisabled: false,
-      id: this.$store.state.users.id,
-      email: this.$store.state.users.email,
+      uid: this.$store.state.users.uid,
+      email: localStorage.getItem("email"),
       password: "",
     };
   },
@@ -120,29 +122,47 @@ export default {
       }
     },
 
+    // async onSubmit(e) {
+    //   e.preventDefault();
+
+    //   const users = {
+    //     uid: this.uid,
+    //     email: this.email,
+    //     password: this.password,
+    //   };
+
+    //   try {
+    //     const response = await this.$axios.put(
+    //       `http://localhost:9090/users/${this.id}`,
+    //       users
+    //     );
+    //     this.$router.push({ path: "/personalise" });
+    //   } catch (e) {
+    //     console.log("Error updating email");
+    //   }
+    // },
+
     async onSubmit(e) {
+      // this.$store.commit(state, response);
       e.preventDefault();
 
       const users = {
-        id: this.id,
         email: this.email,
         password: this.password,
       };
 
       try {
-        const response = await this.$axios.put(
-          `http://localhost:9090/users/${this.id}`,
-          users
+        const response = await this.$fire.auth.createUserWithEmailAndPassword(
+          // "SET_USER",
+          this.email,
+          this.password
         );
-        this.$router.push({ path: "/personalise" });
       } catch (e) {
-        console.log("Error updating email");
+        console.log(`Error creating account": ${e}`);
       }
-    },
-  },
 
-  mounted() {
-    // console.log(this.id);
+      this.$router.push({ path: "/personalise" });
+    },
   },
 };
 </script>

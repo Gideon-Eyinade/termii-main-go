@@ -25,6 +25,9 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [],
+  // router: {
+  //   middleware: ["auth"],
+  // },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   // modules: [],
@@ -40,7 +43,7 @@ export default {
       "@nuxtjs/firebase",
       {
         config: {
-          apiKey: process.env.FIREBASE_API_KEY,
+          apiKey: "AIzaSyAVbl7mSkddlRdiZ7Od0zt8RuYTZJDCCsw",
           authDomain: "termii-email-go-main.firebaseapp.com",
           projectId: "termii-email-go-main",
           storageBucket: "termii-email-go-main.appspot.com",

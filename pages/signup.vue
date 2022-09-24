@@ -87,7 +87,10 @@ export default {
     return {
       isDisabled: false,
       id: "",
+
       email: "",
+      password: "mainGo",
+
       isValidating: false,
       isValidated: false,
     };
@@ -100,13 +103,14 @@ export default {
         /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
       if (newValue.length > 2) {
-        console.log("here");
-        this.isValidating = true;
+        // console.log("here");
+        this.isValidating = false;
         this.isValidated = false;
 
         if (newValue.match(validRegex)) {
           this.isValidating = false;
           this.isValidated = true;
+        
         } else {
           // alert("Invalid email address!");
           // this.email = "";
@@ -124,7 +128,7 @@ export default {
 
       if (this.email.length > 2) {
         console.log("here");
-        this.isValidating = true;
+        // this.isValidating = true;
       }
 
       var validRegex =
@@ -140,49 +144,58 @@ export default {
       }
     },
 
+    // async onSubmit(e) {
+    //   e.preventDefault();
+
+    //   const users = {
+    //     email: this.email,
+    //   };
+
+    //   try {
+    //     let response = await this.$axios.post(
+    //       "http://localhost:9090/users",
+    //       users
+    //     );
+
+    //     // let responseTwo = await this.$fire.auth.createUserWithEmailAndPassword(
+    //     //   users
+    //     // );
+
+    //     // console.log(response);
+    //     this.$store.commit("changeDetails", response.data);
+    //     // this.$store.dispatch("changeDetails", responseTwo.data);
+    //     this.$router.push({ path: "/access" });
+    //   } catch (e) {
+    //     console.log("Error updating email");
+    //   }
+    // },
+
     async onSubmit(e) {
+      // this.$store.commit(state, response);
       e.preventDefault();
 
       const users = {
         email: this.email,
+        password: this.password,
       };
 
       try {
-        let response = await this.$axios.post(
-          "http://localhost:9090/users",
-          users
+        const response = await this.$fire.auth.createUserWithEmailAndPassword(
+          // "SET_USER",
+          this.email,
+          this.password
         );
 
-        //console.log(response);
-        this.$store.commit("changeDetails", response.data);
-        this.$router.push({ path: "/access" });
+        localStorage.setItem("email", response.user.email);
+
+        const test = localStorage.getItem("email");
+        
       } catch (e) {
-        console.log("Error updating email");
+        console.log(`Error creating account": ${e}`);
       }
+
+      this.$router.push({ path: "/access" });
     },
-
-    // animat() {
-    //   var validRegex =
-    //     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-
-    //   if (typeof email === "string" && email.includes("@")) {
-    //     class===dot-falling;
-    //   } else if (this.email === validRegex) {
-    //     id = "";
-    //   } else {
-    //     id = "";
-    //   }
-    // },
-
-    // validateEmail2(email) {
-    //   typeof email === "string" && email.includes("@");
-    // },
-
-    // onEmailChange() {},
-
-    // setIsDisabled() {
-    //   !this.validateEmail2(this.email);
-    // },
   },
 };
 </script>
