@@ -28,7 +28,7 @@
               @change="validateEmail"
             />
             <div :class="{ 'dot-falling': isValidating }"></div>
-            <div v-if="isValidated">
+            <div v-if="!isValidated">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="svg-success"
@@ -68,9 +68,6 @@
             :disabled="isDisabled"
           />
         </form>
-
-        <!-- </NuxtLink
-        > -->
       </main>
     </div>
 
@@ -87,37 +84,30 @@ export default {
     return {
       isDisabled: false,
       id: "",
-
       email: "",
       password: "mainGo",
-
       isValidating: false,
-      isValidated: false,
+      isValidated: true,
     };
   },
 
   watch: {
     email(newValue, oldValue) {
-      console.log(newValue, oldValue);
       var validRegex =
-        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
       if (newValue.length > 2) {
-        // console.log("here");
         this.isValidating = false;
-        this.isValidated = false;
+        this.isValidated = true;
 
         if (newValue.match(validRegex)) {
           this.isValidating = false;
-          this.isValidated = true;
-        
+          this.isValidated = false;
         } else {
-          // alert("Invalid email address!");
-          // this.email = "";
         }
       } else {
         this.isValidating = false;
-        this.isValidated = false;
+        this.isValidated = true;
       }
     },
   },
@@ -127,8 +117,6 @@ export default {
       console.log("here");
 
       if (this.email.length > 2) {
-        console.log("here");
-        // this.isValidating = true;
       }
 
       var validRegex =
@@ -139,8 +127,6 @@ export default {
         this.email = "";
       } else if (this.email.match(validRegex)) {
       } else {
-        // alert("Invalid email address!");
-        // this.email = "";
       }
     },
 
@@ -157,13 +143,10 @@ export default {
     //       users
     //     );
 
-    //     // let responseTwo = await this.$fire.auth.createUserWithEmailAndPassword(
-    //     //   users
-    //     // );
+    //
 
     //     // console.log(response);
     //     this.$store.commit("changeDetails", response.data);
-    //     // this.$store.dispatch("changeDetails", responseTwo.data);
     //     this.$router.push({ path: "/access" });
     //   } catch (e) {
     //     console.log("Error updating email");
@@ -171,8 +154,9 @@ export default {
     // },
 
     async onSubmit(e) {
-      // this.$store.commit(state, response);
       e.preventDefault();
+      this.isValidated = !this.isValidated;
+      this.isValidating = !this.isValidating;
 
       const users = {
         email: this.email,
@@ -181,7 +165,6 @@ export default {
 
       try {
         const response = await this.$fire.auth.createUserWithEmailAndPassword(
-          // "SET_USER",
           this.email,
           this.password
         );
@@ -189,12 +172,9 @@ export default {
         localStorage.setItem("email", response.user.email);
 
         const test = localStorage.getItem("email");
-        
       } catch (e) {
         console.log(`Error creating account": ${e}`);
       }
-
-      this.$router.push({ path: "/access" });
     },
   },
 };

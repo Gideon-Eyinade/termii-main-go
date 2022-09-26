@@ -2,8 +2,7 @@ export const actions = {
   onAuthStateChangedAction(state, users) {
     if (!users) {
       state.commit("SET_USER", null);
-      console.log(state);
-      console.log(users);
+
       this.$router.push({
         path: "../pages/signup.vue",
       });
@@ -14,16 +13,19 @@ export const actions = {
         email,
         password,
       });
-      this.$router.push({
-        path: "/access",
-      });
+      setTimeout(
+        this.$router.push({
+          path: "/access",
+        }),
+        5000
+      );
     }
   },
 };
 
 export const mutations = {
   SET_USER(state, users) {
-    // console.log(users);
+    
     const { email } = users;
     state.users = { email };
   },

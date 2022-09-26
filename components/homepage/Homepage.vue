@@ -38,9 +38,7 @@ export default {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  /* gap: 3rem; */
   width: 100vw;
-  /* background: green; */
   justify-content: flex-start;
 }
 
@@ -50,10 +48,8 @@ main {
   align-content: center;
   justify-content: space-between;
   margin: 0;
-  /* gap: 15rem; */
   width: 100%;
   height: calc(100vh - 240px);
-  /* background: yellow; */
 }
 
 .display {
@@ -62,7 +58,6 @@ main {
   justify-content: center;
   gap: 1.5rem;
   width: 21rem;
-  /* margin-top: 40px; */
   margin-left: 4.375rem;
 }
 
@@ -119,7 +114,6 @@ main {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   width: 100%;
   height: 14rem;
-  /* padding: 20rem auto; */
 }
 
 .bottom p {

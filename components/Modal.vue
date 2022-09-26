@@ -50,8 +50,6 @@ export default {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-
-  /* gap: 400px; */
 }
 
 .personalised {
@@ -63,11 +61,6 @@ export default {
   gap: 1rem;
   margin-bottom: 200px;
 }
-
-/*
-img {
-  margin-top: 12px;
-} */
 
 .personalised h3 {
   font-weight: 600;

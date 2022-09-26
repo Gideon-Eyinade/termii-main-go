@@ -34,31 +34,22 @@ export default {
 </script>
 
 <style scoped>
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
 
 header {
   display: flex;
   align-content: center;
   justify-content: space-between;
-  /* gap: 9rem; */
   margin: 0;
   width: 100%;
   padding: 2.5rem 3.75rem;
   height: 100px;
-  /* background: brown; */
 }
 
 .logo {
   display: flex;
-  /* align-content: center; */
   justify-content: flex-start;
   margin-top: -0.625rem;
   cursor: pointer;
-  /* margin-left: 15px; */
 }
 
 .logo:hover {

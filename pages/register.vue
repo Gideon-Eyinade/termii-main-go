@@ -12,6 +12,7 @@
             height="auto"
         /></NuxtLink>
       </div>
+
       <main>
         <h3>Create a password</h3>
         <p>
@@ -20,13 +21,6 @@
         </p>
 
         <form @submit="onSubmit">
-          <!-- <input
-            id="email"
-            type="email"
-            v-model="email"
-            placeholder="Input your email"
-          /> -->
-
           <div class="append-check">
             <div class="append-name">
               {{ email }}
@@ -65,7 +59,7 @@
           <input
             type="password"
             v-model="password"
-            placeholder="Input your password"
+            placeholder="Input your password "
           />
 
           <input
@@ -143,7 +137,6 @@ export default {
     // },
 
     async onSubmit(e) {
-      // this.$store.commit(state, response);
       e.preventDefault();
 
       const users = {
@@ -153,7 +146,6 @@ export default {
 
       try {
         const response = await this.$fire.auth.createUserWithEmailAndPassword(
-          // "SET_USER",
           this.email,
           this.password
         );
@@ -161,6 +153,11 @@ export default {
         console.log(`Error creating account": ${e}`);
       }
 
+      document.querySelector(".buton").value = "Creating...";
+      setTimeout(this.moveToNextPage, 2000);
+    },
+
+    moveToNextPage() {
       this.$router.push({ path: "/personalise" });
     },
   },
@@ -203,11 +200,7 @@ main h3 {
   font-weight: 700;
   font-size: 2rem;
   line-height: 44px !important;
-  color: inherit;
-  -webkit-box-decoration-break: clone;
-  background: -webkit-linear-gradient(-48deg, #4480b1 -30%, #365899 60%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #365899;
   font-family: "Karla", sans-serif;
 }
 
@@ -232,7 +225,6 @@ main span {
 
 .append-check {
   display: flex;
-  /* justify-content: center; */
 }
 
 .append-name {
@@ -390,6 +382,13 @@ input:focus {
   cursor: pointer;
   transition: 0.3s;
   transform: scale(0.91);
+  color: #fff;
+  background: linear-gradient(-48deg, #0dcbe5 -30%, #365899 60%) !important;
+  font-family: "Karla", sans-serif;
+}
+
+.button:active {
+  color: #fff;
 }
 
 #disabling {
@@ -403,7 +402,6 @@ input:focus {
 .right {
   display: flex;
   width: 50%;
-  /* height: 98.7vh; */
 }
 
 .right img {

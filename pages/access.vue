@@ -70,11 +70,16 @@ export default {
         alert("Please input code");
         this.code = "";
       } else if (this.code.match(validRegex)) {
-        this.showModal = true;
+        document.querySelector(".first-button").innerHTML = "Verfying...";
+        setTimeout(this.showModall, 2000);
       } else {
         alert("Invalid code, input a 5-digit-number!");
         this.code = "";
       }
+    },
+
+    showModall() {
+      this.showModal = true;
     },
   },
 };
@@ -113,7 +118,7 @@ main {
 }
 
 main h3 {
-  font-weight: 700;
+  font-weight: 700; 
   font-size: 1.875rem;
   line-height: 40px !important;
   color: #365899;

@@ -63,8 +63,6 @@ export default {
   justify-content: space-between;
   height: 100vh;
   width: 100vw;
-
-  /* background: linear-gradient(-48deg, #0dcbe5 -30%, #365899 90%) !important; */
 }
 
 .content {
@@ -75,8 +73,6 @@ export default {
   gap: 50px;
   margin-left: 70px;
   height: 100vh;
-
-  /* test */
 }
 
 .right {
@@ -86,7 +82,6 @@ export default {
 }
 
 .logo {
-  /* margin-top: 1rem; */
 }
 
 main {
@@ -104,8 +99,6 @@ main h3 {
   font-size: 0.875rem;
   line-height: 30px !important;
   font-family: "Karla", sans-serif;
-  /* width: 200px; */
-  /* text-align: center; */
 }
 
 .first {
@@ -184,7 +177,6 @@ main button:hover {
 }
 
 .bottom {
-  /* margin-bottom: 20px; */
   text-align: center;
   text-decoration: none;
 }
