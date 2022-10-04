@@ -5,6 +5,7 @@
     <main>
       <section class="display">
         <h3>Never get frustrated thinking of what to write in the mail.</h3>
+
         <p>
           Your go-to tool to access email templates for any and every scenario.
         </p>

@@ -114,7 +114,7 @@ export default {
 
   methods: {
     validateEmail() {
-      console.log("here");
+      // console.log("here");
 
       if (this.email.length > 2) {
       }
@@ -199,7 +199,6 @@ export default {
   justify-content: flex-start;
   gap: 100px;
   margin-left: 70px;
-
   width: 50%;
 }
 
@@ -486,3 +485,8 @@ input:focus {
   object-fit: cover;
 }
 </style>
+
+
+
+
+

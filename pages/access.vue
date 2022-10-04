@@ -118,7 +118,7 @@ main {
 }
 
 main h3 {
-  font-weight: 700; 
+  font-weight: 700;
   font-size: 1.875rem;
   line-height: 40px !important;
   color: #365899;
